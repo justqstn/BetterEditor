@@ -36,7 +36,7 @@ LeaderBoard.PlayerLeaderBoardValues = [
 		Value: "banned",
 		DisplayName: "<B>z</B>абанен",
 		ShortDisplayName: "<B>z</B>абанен"
-	}
+	}true
 ];
 
 Ui.GetContext().TeamProp1.Value = {
@@ -52,21 +52,30 @@ b_team.Properties.Get("hint").Value = "<B>BETTER EDITOR</B><i>\nby just_qstn</i>
 // События
 Teams.OnAddTeam.Add(function (t) {
 	let bl = t.Id == "players" ? false : true;
-	Build.GetContext().Pipette.Value = bl;
-	Build.GetContext().FloodFill.Value = bl;
-	Build.GetContext().FillQuad.Value = bl;
-	Build.GetContext().RemoveQuad.Value = bl;
-	Build.GetContext().BalkLenChange.Value = bl;
-	Build.GetContext().SetSkyEnable.Value = bl;
-	Build.GetContext().GenMapEnable.Value = bl;
-	Build.GetContext().ChangeCameraPointsEnable.Value = bl;
-	Build.GetContext().QuadChangeEnable.Value = bl;
-	Build.GetContext().BuildModeEnable.Value = bl;
-	Build.GetContext().RenameMapEnable.Value = bl;
-	Build.GetContext().ChangeMapAuthorsEnable.Value = bl;
-	Build.GetContext().LoadMapEnable.Value = bl;
-	Build.GetContext().ChangeSpawnsEnable.Value = bl;
-	Build.GetContext().BuildRangeEnable.Value = bl;
+	Build.GetContext(t).Pipette.Value = bl;
+	Build.GetContext(t).FloodFill.Value = bl;
+	Build.GetContext(t).FillQuad.Value = bl;
+	Build.GetContext(t).RemoveQuad.Value = bl;
+	Build.GetContext(t).BalkLenChange.Value = bl;
+	Build.GetContext(t).SetSkyEnable.Value = bl;
+	Build.GetContext(t).GenMapEnable.Value = bl;
+	Build.GetContext(t).ChangeCameraPointsEnable.Value = bl;
+	Build.GetContext(t).QuadChangeEnable.Value = bl;
+	Build.GetContext(t).BuildModeEnable.Value = bl;
+	Build.GetContext(t).RenameMapEnable.Value = bl;
+	Build.GetContext(t).ChangeMapAuthorsEnable.Value = bl;
+	Build.GetContext(t).LoadMapEnable.Value = bl;
+	Build.GetContext(t).ChangeSpawnsEnable.Value = bl;
+	Build.GetContext(t).BuildRangeEnable.Value = bl;
+	Inventory.GetContext(t).Main.Value = bl;
+	Inventory.GetContext(t).MainInfinity.Value = bl;
+	Inventory.GetContext(t).Secondary.Value = bl;
+	Inventory.GetContext(t).SecondaryInfinity.Value = bl;
+	Inventory.GetContext(t).Melee.Value = bl;
+	Inventory.GetContext(t).BuildInfinity.Value = bl;
+	Inventory.GetContext(t).Build.Value = bl;
+	Inventory.GetContext(t).Explosive.Value = bl;
+	Inventory.GetContext(t).ExplosiveInfinity.Value = bl;
 });
 
 Teams.OnRequestJoinTeam.Add(function (p, t) {
