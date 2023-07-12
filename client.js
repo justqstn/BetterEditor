@@ -36,7 +36,7 @@ LeaderBoard.PlayerLeaderBoardValues = [
 		Value: "banned",
 		DisplayName: "<B>z</B>абанен",
 		ShortDisplayName: "<B>z</B>абанен"
-	}true
+	}
 ];
 
 Ui.GetContext().TeamProp1.Value = {
