@@ -12,8 +12,8 @@ const ADMIN = "9DE9DFD7D1F5C16A", BANNED = "";
 // Переменные
 
 // Создание команд
-Teams.Add("players", "<i><B><size=38>И</size><size=30>гроки</size></B>\nbetter editor by just_qstn</i>", {g: 1, b: 1});
-Teams.Add("builders", "<i><B><size=38>С</size><size=30>троители</size></B>\nbetter editor by just_qstn</i>", {g: 0.8});
+Teams.Add("players", "<i><B><size=38>И</size><size=30>гроки</size></B>\nbetter editor by just_qstn</i>", {g: 0.6, b: 0.6});
+Teams.Add("builders", "<i><B><size=38>С</size><size=30>троители</size></B>\nbetter editor by just_qstn</i>", {g: 0.6});
 let p_team = Teams.Get("players"), b_team = Teams.Get("builders");
 
 // Настройки
@@ -106,7 +106,7 @@ cmd_trigger.Tags = ["cmd"];
 cmd_trigger.Enable = true;
 cmd_trigger.OnEnter.Add(function(p, a) {
 	try {
-		eval(String(a.Name));
+		eval(String(a.Name).split("$").join("."));
 	} catch(e) { p.Ui.Hint.Value = e.name + "\n" + e.message; }
 });
 
