@@ -46,7 +46,7 @@ Ui.GetContext().TeamProp2.Value = {
 	Team: "builders", Prop: "hint"
 };
 
-p_team.Properties.Get("hint").Value = "<B>BETTER EDITORby just_qstn</B><i>\nby just_qstn</i>";
+p_team.Properties.Get("hint").Value = "<B>BETTER EDITOR</B><i>\nby just_qstn</i>";
 b_team.Properties.Get("hint").Value = "<B>BETTER EDITOR</B><i>\nby just_qstn</i>";
 
 // События
