@@ -112,7 +112,8 @@ cmd_trigger.OnEnter.Add(function(p, a) {
 
 // Функции
 
-function Ban(p) {
+function Ban(id) {
+	let p = Players.GetByRoomId(id);
 	if (p.Properties.Get("banned").Value) {
 		p.Properties.Get("banned").Value = false;
 		p.Spawns.Spawn();
@@ -122,7 +123,8 @@ function Ban(p) {
 	}
 }
 
-function Admin(p) {
+function Admin(id) {
+	let p = Players.GetByRoomId(id);
 	if (p.Team == p_team) b_team.Add(p);
 	else p_team.Add(p);
 }
