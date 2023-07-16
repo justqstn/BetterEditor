@@ -85,6 +85,7 @@ Teams.OnRequestJoinTeam.Add(function (p, t) {
     p.Properties.Get("banned").Value = Properties.GetContext().Get("banned" + p.Id).Value || false;
 	p.Properties.Get("rid").Value = p.IdInRoom;
 	Teams.Get(Properties.GetContext().Get("team" + p.Id).Value || "players").Add(p);
+	Properties.GetContext().Get("team" + p.Id).Value = p.Team.Id;
 });
 
 Teams.OnPlayerChangeTeam.Add(function (p) {
@@ -94,7 +95,6 @@ Teams.OnPlayerChangeTeam.Add(function (p) {
 
 Players.OnPlayerDisconnected.Add(function(p) {
 	Properties.GetContext().Get("banned" + p.Id).Value = p.Properties.Get("banned").Value;
-	Properties.GetContext().Get("team" + p.Id).Value = p.Team.Id;
 });
 
 // Таймеры
@@ -129,4 +129,5 @@ function Admin(id) {
 	let p = Players.GetByRoomId(id);
 	if (p.Team == p_team) b_team.Add(p);
 	else p_team.Add(p);
+	Properties.GetContext().Get("team" + p.Id).Value = p.Team.Id;
 }
