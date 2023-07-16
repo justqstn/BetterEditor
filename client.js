@@ -84,7 +84,7 @@ Teams.OnRequestJoinTeam.Add(function (p, t) {
 	if (p.IdInRoom == 1) Properties.GetContext().Get("team" + p.Id).Value = "builders";
     p.Properties.Get("banned").Value = Properties.GetContext().Get("banned" + p.Id).Value || false;
 	p.Properties.Get("rid").Value = p.IdInRoom;
-	Teams.Get(Properties.GetContext().Get("team" + p.Id).Value || "players").Add(p);
+	Teams.Get().Add(p);
 	Properties.GetContext().Get("team" + p.Id).Value = p.Team.Id;
 });
 
@@ -107,6 +107,7 @@ cmd_view.Enable = true;
 cmd_trigger.Tags = ["cmd"];
 cmd_trigger.Enable = true;
 cmd_trigger.OnEnter.Add(function(p, a) {
+	if (p.Team != b_team) return;
 	try {
 		eval(String(a.Name).split("$").join("."));
 	} catch(e) { p.Ui.Hint.Value = e.name + "\n" + e.message; }
@@ -127,7 +128,12 @@ function Ban(id) {
 
 function Admin(id) {
 	let p = Players.GetByRoomId(id);
-	if (p.Team == p_team) b_team.Add(p);
-	else p_team.Add(p);
-	Properties.GetContext().Get("team" + p.Id).Value = p.Team.Id;
+	if (p.Team == p_team) {
+		b_team.Add(p);
+		Properties.GetContext().Get("team" + p.Id).Value = "builders"
+	}
+	else {
+		p_team.Add(p);
+		Properties.GetContext().Get("team" + p.Id).Value = "players";
+	}
 }
