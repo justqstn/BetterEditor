@@ -84,8 +84,8 @@ Teams.OnRequestJoinTeam.Add(function (p, t) {
 	if (p.IdInRoom == 1) Properties.GetContext().Get("team" + p.Id).Value = "builders";
     p.Properties.Get("banned").Value = Properties.GetContext().Get("banned" + p.Id).Value || false;
 	p.Properties.Get("rid").Value = p.IdInRoom;
-	Teams.Get().Add(p);
-	Properties.GetContext().Get("team" + p.Id).Value = p.Team.Id;
+	let team = Properties.GetContext().Get("team" + p.Id).Value || "players";
+	Teams.Get(team).Add(p);
 });
 
 Teams.OnPlayerChangeTeam.Add(function (p) {
