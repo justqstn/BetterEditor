@@ -49,7 +49,7 @@ Ui.GetContext().TeamProp2.Value = {
 p_team.Properties.Get("hint").Value = "<B><color=#6B8E23>Better!</color> EDITOR</B><i>\nby just_qstn</i>";
 b_team.Properties.Get("hint").Value = "<B><color=#6B8E23>Better!</color> EDITOR</B><i>\nby just_qstn</i>";
 p_team.Spawns.SpawnPointsGroups.Add(1);
-p_team.Spawns.SpawnPointsGroups.Add(2);
+b_team.Spawns.SpawnPointsGroups.Add(2);
 
 // События
 Teams.OnAddTeam.Add(function (t) {
