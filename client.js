@@ -100,7 +100,7 @@ Players.OnPlayerDisconnected.Add(function(p) {
 // Таймеры
 
 // Зоны
-AddArea({name: "cmd", tags: ["cmd"], view_enable: true, trg_enable: true, color: {r: 1, g: 1, b: 1}}, CmdTrigger);
+AddArea({name: "cmd", tags: ["cmd"], view_enable: true, trg_enable: true, color: {r: 1, g: 1, b: 1}, CmdTrigger});
 
 // Функции
 function AddArea(params) {
