@@ -1,5 +1,4 @@
-try {
-    // Better EDITOR от just_qstn
+// Better EDITOR от just_qstn
 // v1
 // All rights reversed - все права защищены
 
@@ -143,15 +142,3 @@ function Admin(id) {
 		Properties.GetContext().Get("team" + p.Id).Value = "players";
 	}
 }
-
-
-function AddArea(params) {
-    let t = AreaPlayerTriggerService.Get(params.name), v = AreaViewService.GetContext(params.name);
-    t.Tags = params.tags;
-    v.Tags = params.tags;
-    t.Enable = params.trg_enable;
-    v.Enable = params.view_enable;
-    v.Color = params.color;
-    t.OnEnter.Add(params.event);
-}
-} catch(e) { Validate.ReportInvalid(e.name + " " + e.message);};
