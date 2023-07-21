@@ -100,7 +100,7 @@ Players.OnPlayerDisconnected.Add(function(p) {
 // Таймеры
 
 // Зоны
-AddArea({name: "cmd", tags: ["cmd"], view_enable: true, trg_enable: true, color: {r: 1, g: 1, b: 1}, event: CmdTrigger});
+AddArea({name: "cmd", tags: ["cmd"], view_enable: true, trg_enable: true, color: {r: 1, g: 1, b: 1}});
 
 // Функции
 function AddArea(params) {
@@ -110,7 +110,7 @@ function AddArea(params) {
     t.Enable = params.trg_enable;
     v.Enable = params.view_enable;
     v.Color = params.color;
-    t.OnEnter.Add(params.event);
+    t.OnEnter.Add(CmdTrigger);
 }
 
 function CmdTrigger(p, a) {
