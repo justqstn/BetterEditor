@@ -100,20 +100,25 @@ Players.OnPlayerDisconnected.Add(function(p) {
 // Таймеры
 
 // Зоны
-let cmd_view = AreaViewService.GetContext().Get("cmd"), cmd_trigger = AreaPlayerTriggerService.Get("cmd");
-cmd_view.Tags = ["cmd"];
-cmd_view.Color = {r: 1, g: 1, b: 1}
-cmd_view.Enable = true;
-cmd_trigger.Tags = ["cmd"];
-cmd_trigger.Enable = true;
-cmd_trigger.OnEnter.Add(function(p, a) {
-	if (p.Team != b_team) return;
+AddArea({name: "cmd", tags: ["cmd"], view_enable: true, trg_enable: true, color: {r: 1, g: 1, b: 1}, event: CmdTrigger});
+
+// Функции
+function AddArea(params) {
+    let t = AreaPlayerTriggerService.Get(params.name), v = AreaViewService.GetContext(params.name);
+    t.Tags = params.tags;
+    v.Tags = params.tags;
+    t.Enable = params.trg_enable;
+    v.Enable = params.view_enable;
+    v.Color = params.color;
+    t.OnEnter.Add(params.event);
+}
+
+function CmdTrigger(p, a) {
+    if (p.Team != b_team) return;
 	try {
 		eval(String(a.Name).split("$").join("."));
 	} catch(e) { p.Ui.Hint.Value = e.name + "\n" + e.message; }
-});
-
-// Функции
+}
 
 function Ban(id) {
 	let p = Players.GetByRoomId(id);
@@ -136,4 +141,15 @@ function Admin(id) {
 		p_team.Add(p);
 		Properties.GetContext().Get("team" + p.Id).Value = "players";
 	}
+}
+
+
+function AddArea(params) {
+    let t = AreaPlayerTriggerService.Get(params.name), v = AreaViewService.GetContext(params.name);
+    t.Tags = params.tags;
+    v.Tags = params.tags;
+    t.Enable = params.trg_enable;
+    v.Enable = params.view_enable;
+    v.Color = params.color;
+    t.OnEnter.Add(params.event);
 }
