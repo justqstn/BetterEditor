@@ -7,14 +7,14 @@
 
 
 // Константы
-const ADMIN = "9DE9DFD7D1F5C16A", BANNED = "", COLORS = ["#FF0000", "#FFA500", "#FFD700", "#32CD32", "#AFEEEE", "#1E90FF", "#483D8B"]
+const ADMIN = "9DE9DFD7D1F5C16A", BANNED = "", COLORS = ["#FF0000", "#FFA500", "#FFD700", "#32CD32", "#AFEEEE", "#1E90FF", "#8A2BE2"]
 
 // Переменные
 
 // Создание команд
 Teams.Add("players", "<i><B><size=38>И</size><size=30>гроки</size></B>\nbetter! editor</i>", rgb(70, 130, 180));
 Teams.Add("builders", "<i><B><size=38>С</size><size=30>троители</size></B>\nbetter! editor</i>", rgb(153, 50, 204));
-Teams.Add("better", "<i><B><size=38>У</size><size=30>дачи!</size></B>\nbetter! editor</i>", rgb(255, 255, 255));
+Teams.Add("better", "<i><B><size=38>У</size><size=30>дачи!</size></B>\nbetter! editor</i>", rgb(0, 0, 0));
 let p_team = Teams.Get("players"), b_team = Teams.Get("builders");
 
 // Настройки
