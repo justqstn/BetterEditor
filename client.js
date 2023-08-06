@@ -7,7 +7,7 @@
 
 
 // Константы
-const ADMIN = "9DE9DFD7D1F5C16A", BANNED = "";
+const ADMIN = "9DE9DFD7D1F5C16A", BANNED = "", COLORS = ["#FFA500", "#FF4500", "#B22222", "#8B0000", "#8B008B", "#4B0082", "#483D8B", "#0000CD", "#191970", "#1E90FF", "#00FFFF", "#20B2AA", "#32CD32", "#98FB98", "#ADFF2F", "#FFD700", "#FFFF00"]
 
 // Переменные
 
@@ -102,6 +102,14 @@ Players.OnPlayerDisconnected.Add(function(p) {
 });
 
 // Таймеры
+Timers.GetContext().Get("inf").RestartLoop(1);
+Timers.GetContext().Get("inf").OnTimer.Add(function () {
+	let indx = COLORS.indexOf(p_team.Properties.Get("hint").Value.slice(10, 17));
+	if (indx < COLORS.length - 1) indx++;
+	else indx = 0;
+	p_team.Properties.Get("hint").Value = "<B><color=" + COLORS[indx] + ">Better!</color> EDITOR</B><i>\nby just_qstn</i>";
+	b_team.Properties.Get("hint").Value = "<B><color=" + COLORS[indx] + ">Better!</color> EDITOR</B><i>\nby just_qstn</i>";
+});
 
 // Зоны
 AddArea({name: "cmd", tags: ["cmd"], view_enable: true, trg_enable: true, color: {r: 1, g: 1, b: 1}, event: CmdTrigger});
