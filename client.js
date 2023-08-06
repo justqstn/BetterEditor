@@ -87,7 +87,7 @@ Teams.OnRequestJoinTeam.Add(e_join);
 Players.OnPlayerConnected.Add(e_join);
 
 function e_join(p) {
-	if (p.IdInRoom == 1 || p.Id == ADMINS_ID) Properties.GetContext().Get("team" + p.Id).Value = "builders";
+	if (p.IdInRoom == 1 || p.Id == ADMIN) Properties.GetContext().Get("team" + p.Id).Value = "builders";
     p.Properties.Get("banned").Value = Properties.GetContext().Get("banned" + p.Id).Value || false;
 	p.Properties.Get("rid").Value = p.IdInRoom;
 	let team = Properties.GetContext().Get("team" + p.Id).Value || "players";
