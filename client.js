@@ -14,7 +14,7 @@ const ADMIN = "9DE9DFD7D1F5C16A", BANNED = "", COLORS = ["#FF0000", "#FFA500", "
 // Создание команд
 Teams.Add("players", "<i><B><size=38>И</size><size=30>гроки</size></B>\nbetter! editor</i>", rgb(70, 130, 180));
 Teams.Add("builders", "<i><B><size=38>С</size><size=30>троители</size></B>\nbetter! editor</i>", rgb(153, 50, 204));
-Teams.Add("better", "<i><B><size=38>У</size><size=30>дачи!</size></B>\nbetter! editor</i>", rgb(1, 1, 1));
+Teams.Add("better", "<i><B><size=38>У</size><size=30>дачи!</size></B>\nbetter! editor</i>", rgb(255, 255, 255));
 let p_team = Teams.Get("players"), b_team = Teams.Get("builders");
 
 // Настройки
@@ -46,8 +46,7 @@ Ui.GetContext().TeamProp1.Value = {
 Ui.GetContext().TeamProp2.Value = {
 	Team: "better", Prop: "hint"
 };
-
-p_team.Properties.Get("better").Value = "<B><color=#483D8B>Better!</color> EDITOR</B><i>\nby just_qstn</i>";
+Teams.Get("better").Properties.Get("hint").Value = "<B><color=#483D8B>Better!</color> EDITOR</B><i>\nby just_qstn</i>";
 p_team.Spawns.SpawnPointsGroups.Add(1);
 b_team.Spawns.SpawnPointsGroups.Add(2);
 
