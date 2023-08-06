@@ -12,8 +12,8 @@ const ADMIN = "9DE9DFD7D1F5C16A", BANNED = "";
 // Переменные
 
 // Создание команд
-Teams.Add("players", "<i><B><size=38>И</size><size=30>гроки</size></B>\nbetter! editor</i>", {g: 0.6, b: 0.6});
-Teams.Add("builders", "<i><B><size=38>С</size><size=30>троители</size></B>\nbetter! editor</i>", {g: 0.6});
+Teams.Add("players", "<i><B><size=38>И</size><size=30>гроки</size></B>\nbetter! editor</i>", rgb(70, 130, 180));
+Teams.Add("builders", "<i><B><size=38>С</size><size=30>троители</size></B>\nbetter! editor</i>", rgb(153, 50, 204));
 let p_team = Teams.Get("players"), b_team = Teams.Get("builders");
 
 // Настройки
@@ -46,8 +46,8 @@ Ui.GetContext().TeamProp2.Value = {
 	Team: "builders", Prop: "hint"
 };
 
-p_team.Properties.Get("hint").Value = "<B><color=#6B8E23>Better!</color> EDITOR</B><i>\nby just_qstn</i>";
-b_team.Properties.Get("hint").Value = "<B><color=#6B8E23>Better!</color> EDITOR</B><i>\nby just_qstn</i>";
+p_team.Properties.Get("hint").Value = "<B><color=#FF8C00>Better!</color> EDITOR</B><i>\nby just_qstn</i>";
+b_team.Properties.Get("hint").Value = "<B><color=#FF8C00>Better!</color> EDITOR</B><i>\nby just_qstn</i>";
 p_team.Spawns.SpawnPointsGroups.Add(1);
 b_team.Spawns.SpawnPointsGroups.Add(2);
 
@@ -80,15 +80,19 @@ Teams.OnAddTeam.Add(function (t) {
 	Inventory.GetContext(t).ExplosiveInfinity.Value = bl;
 });
 
-Teams.OnRequestJoinTeam.Add(function (p, t) {
+Teams.OnRequestJoinTeam.Add(e_join);
+Players.OnPlayerConnected.Add(e_join);
+
+function e_join(p) {
 	if (p.IdInRoom == 1) Properties.GetContext().Get("team" + p.Id).Value = "builders";
     p.Properties.Get("banned").Value = Properties.GetContext().Get("banned" + p.Id).Value || false;
 	p.Properties.Get("rid").Value = p.IdInRoom;
 	let team = Properties.GetContext().Get("team" + p.Id).Value || "players";
 	Teams.Get(team).Add(p);
-});
+}
 
 Teams.OnPlayerChangeTeam.Add(function (p) {
+    p.Spawns.Spawn();
     p.Spawns.Spawn();
 	if (p.Properties.Get("banned").Value) p.Spawns.Despawn();
 });
@@ -103,6 +107,10 @@ Players.OnPlayerDisconnected.Add(function(p) {
 AddArea({name: "cmd", tags: ["cmd"], view_enable: true, trg_enable: true, color: {r: 1, g: 1, b: 1}, event: CmdTrigger});
 
 // Функции
+function rgb(rc, gc, bc) {
+	return { r: rc / 255, g: gc / 255, b: bc / 255 };
+}
+
 function AddArea(params) {
     let t = AreaPlayerTriggerService.Get(params.name), v = AreaViewService.GetContext().Get(params.name);
     t.Tags = params.tags;
