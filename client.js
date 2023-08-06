@@ -14,6 +14,7 @@ const ADMIN = "9DE9DFD7D1F5C16A", BANNED = "", COLORS = ["#FF0000", "#FFA500", "
 // Создание команд
 Teams.Add("players", "<i><B><size=38>И</size><size=30>гроки</size></B>\nbetter! editor</i>", rgb(70, 130, 180));
 Teams.Add("builders", "<i><B><size=38>С</size><size=30>троители</size></B>\nbetter! editor</i>", rgb(153, 50, 204));
+Teams.Add("better", "<i><B><size=38>У</size><size=30>дачи!</size></B>\nbetter! editor</i>", rgb(1, 1, 1));
 let p_team = Teams.Get("players"), b_team = Teams.Get("builders");
 
 // Настройки
@@ -40,14 +41,13 @@ LeaderBoard.PlayerLeaderBoardValues = [
 ];
 
 Ui.GetContext().TeamProp1.Value = {
-	Team: "players", Prop: "hint"
+	Team: "better", Prop: "hint"
 };
 Ui.GetContext().TeamProp2.Value = {
-	Team: "builders", Prop: "hint"
+	Team: "better", Prop: "hint"
 };
 
-p_team.Properties.Get("hint").Value = "<B><color=#483D8B>Better!</color> EDITOR</B><i>\nby just_qstn</i>";
-b_team.Properties.Get("hint").Value = "<B><color=#483D8B>Better!</color> EDITOR</B><i>\nby just_qstn</i>";
+p_team.Properties.Get("better").Value = "<B><color=#483D8B>Better!</color> EDITOR</B><i>\nby just_qstn</i>";
 p_team.Spawns.SpawnPointsGroups.Add(1);
 b_team.Spawns.SpawnPointsGroups.Add(2);
 
@@ -104,11 +104,10 @@ Players.OnPlayerDisconnected.Add(function(p) {
 // Таймеры
 Timers.GetContext().Get("inf").RestartLoop(1);
 Timers.GetContext().Get("inf").OnTimer.Add(function () {
-	let indx = COLORS.indexOf(p_team.Properties.Get("hint").Value.slice(10, 17));
+	let indx = COLORS.indexOf(Teams.Get("better").Properties.Get("hint").Value.slice(10, 17));
 	if (indx < COLORS.length - 1) indx++;
 	else indx = 0;
-	p_team.Properties.Get("hint").Value = "<B><color=" + COLORS[indx] + ">Better!</color> EDITOR</B><i>\nby just_qstn</i>";
-	b_team.Properties.Get("hint").Value = "<B><color=" + COLORS[indx] + ">Better!</color> EDITOR</B><i>\nby just_qstn</i>";
+	Teams.Get("better").Properties.Get("hint").Value = "<B><color=" + COLORS[indx] + ">Better!</color> EDITOR</B><i>\nby just_qstn</i>";
 });
 
 // Зоны
