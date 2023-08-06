@@ -7,7 +7,7 @@
 
 
 // Константы
-const ADMIN = "9DE9DFD7D1F5C16A", BANNED = "", COLORS = ["#FFA500", "#FF4500", "#B22222", "#8B0000", "#8B008B", "#4B0082", "#483D8B", "#0000CD", "#191970", "#1E90FF", "#00FFFF", "#20B2AA", "#32CD32", "#98FB98", "#ADFF2F", "#FFD700", "#FFFF00"]
+const ADMIN = "9DE9DFD7D1F5C16A", BANNED = "", COLORS = ["#FF0000", "#FFA500", "#FFD700", "#32CD32", "#AFEEEE", "#1E90FF", "#483D8B"]
 
 // Переменные
 
@@ -46,8 +46,8 @@ Ui.GetContext().TeamProp2.Value = {
 	Team: "builders", Prop: "hint"
 };
 
-p_team.Properties.Get("hint").Value = "<B><color=#FF8C00>Better!</color> EDITOR</B><i>\nby just_qstn</i>";
-b_team.Properties.Get("hint").Value = "<B><color=#FF8C00>Better!</color> EDITOR</B><i>\nby just_qstn</i>";
+p_team.Properties.Get("hint").Value = "<B><color=#483D8B>Better!</color> EDITOR</B><i>\nby just_qstn</i>";
+b_team.Properties.Get("hint").Value = "<B><color=#483D8B>Better!</color> EDITOR</B><i>\nby just_qstn</i>";
 p_team.Spawns.SpawnPointsGroups.Add(1);
 b_team.Spawns.SpawnPointsGroups.Add(2);
 
