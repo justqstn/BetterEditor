@@ -1,13 +1,36 @@
 {
-    "Name": "<B><color=#FF8C00>Better!</color> EDITOR</B>",
-    "Description": "<B>v1.0. Режим от just_qstn.</B>\nПродвинутый редактор карт добавляет систему хостов, зону выполнения кода и другое. <i>Туториал можно найти в телеграме: t.me/pixel_combats2</i>",
+    "Name": "<B><color=#FF0000>Better!</color> EDITOR</B>",
+    "Description": "<B>v1.1. Режим от just_qstn.</B>\nПродвинутый редактор карт добавляет систему хостов, зону выполнения кода и другое. <i>Туториал можно найти в телеграме: t.me/pixel_combats2</i>",
     "StartClientVersion": 334,
     "MapLists": [
-      {
-        "MapListId": 8401,
-        "Name": "Заготовки"
-      }
+        {
+            "MapListId": 8401,
+            "Name": "Заготовки"
+        }
     ],
-    "Parameters": {  }
-  }
+    "Parameters": {
+        "Bool": [
+            {
+                "Name": "gradient",
+                "DisplayName": "Градиент",
+                "Default": true
+            },
+            {
+                "Name": "1hp",
+                "DisplayName": "1ХП",
+                "Default": false
+            },
+            {
+                "Name": "godmode_admin",
+                "DisplayName": "Бессмертие для строителей",
+                "Default": false
+            },
+            {
+                "Name": "godmode_people",
+                "DisplayName": "Бессмертие для обычных игроков",
+                "Default": false
+            },
+        ]
+    }
+}
 
