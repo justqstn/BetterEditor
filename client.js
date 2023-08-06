@@ -26,6 +26,10 @@ Build.GetContext().BlocksSet.Value = BuildBlocksSet.AllClear;
 Build.GetContext().CollapseChangeEnable.Value = true;
 Build.GetContext().FlyEnable.Value = true;
 
+if (GameMode.Parameters.GetBool("1hp")) contextedProperties.GetContext().MaxHp.Value = 1;
+if (GameMode.Parameters.GetBool("godmode_admin")) b_team.Damage.DamageIn.Value = false;
+if (GameMode.Parameters.GetBool("godmode_people")) p_team.Damage.DamageIn.Value = false;
+
 // Интерфейс
 LeaderBoard.PlayerLeaderBoardValues = [
 	{
@@ -46,7 +50,7 @@ Ui.GetContext().TeamProp1.Value = {
 Ui.GetContext().TeamProp2.Value = {
 	Team: "better", Prop: "hint"
 };
-Teams.Get("better").Properties.Get("hint").Value = "<B><color=#483D8B>Better!</color> EDITOR</B><i>\nby just_qstn</i>";
+Teams.Get("better").Properties.Get("hint").Value = "<B><color=#483D8B>Better!</color> EDITOR</B><i>\n\nby just_qstn</i>";
 p_team.Spawns.SpawnPointsGroups.Add(1);
 b_team.Spawns.SpawnPointsGroups.Add(2);
 
@@ -101,12 +105,12 @@ Players.OnPlayerDisconnected.Add(function(p) {
 });
 
 // Таймеры
-Timers.GetContext().Get("inf").RestartLoop(1);
+if (GameMode.Parameters.GetBool("gradient")) Timers.GetContext().Get("inf").RestartLoop(1);
 Timers.GetContext().Get("inf").OnTimer.Add(function () {
 	let indx = COLORS.indexOf(Teams.Get("better").Properties.Get("hint").Value.slice(10, 17));
 	if (indx < COLORS.length - 1) indx++;
 	else indx = 0;
-	Teams.Get("better").Properties.Get("hint").Value = "<B><color=" + COLORS[indx] + ">Better!</color> EDITOR</B><i>\nby just_qstn</i>";
+	Teams.Get("better").Properties.Get("hint").Value = "<B><color=" + COLORS[indx] + ">Better!</color> EDITOR</B><i>\n\nby just_qstn</i>";
 });
 
 // Зоны
