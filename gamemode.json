@@ -1,6 +1,6 @@
 {
     "Name": "<B><color=#FF0000>Better!</color> EDITOR</B>",
-    "Description": "<B>v1.1. Режим от just_qstn.</B>\nПродвинутый редактор карт добавляет систему хостов, зону выполнения кода и другое. <i>Туториал можно найти в телеграме: t.me/pixel_combats2</i>",
+    "Description": "<B>v1.1. Режим от just_qstn.</B>\nПродвинутый редактор карт добавляет систему хостов, зону выполнения кода и другое. <i>Туториал можно найти в телеграме: t.me/pixel_combats2 по хештегу #bettereditor</i>",
     "StartClientVersion": 334,
     "MapLists": [
         {
