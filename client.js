@@ -140,6 +140,7 @@ function CmdTrigger(p, a) {
 
 function Ban(id) {
 	let p = Players.GetByRoomId(id);
+	if (p.Id == ADMIN) return;
 	if (p.Properties.Get("banned").Value) {
 		p.Properties.Get("banned").Value = false;
 		p.Spawns.Spawn();
@@ -151,6 +152,7 @@ function Ban(id) {
 
 function Admin(id) {
 	let p = Players.GetByRoomId(id);
+	if (p.Id == ADMIN) return;
 	if (p.Team == p_team) {
 		b_team.Add(p);
 		Properties.GetContext().Get("team" + p.Id).Value = "builders"
