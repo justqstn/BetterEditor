@@ -21,6 +21,7 @@ let p_team = Teams.Get("players"), b_team = Teams.Get("builders");
 BreackGraph.OnlyPlayerBlocksDmg = false;
 BreackGraph.WeakBlocks = true;
 BreackGraph.BreackAll = true;
+Spawns.GetContext().RespawnTime.Value = 0;
 Ui.GetContext().QuadsCount.Value = true;
 Build.GetContext().BlocksSet.Value = BuildBlocksSet.AllClear;
 Build.GetContext().CollapseChangeEnable.Value = true;
