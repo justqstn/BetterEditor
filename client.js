@@ -27,6 +27,7 @@ Build.GetContext().CollapseChangeEnable.Value = true;
 Build.GetContext().FlyEnable.Value = true;
 
 if (GameMode.Parameters.GetBool("1hp")) contextedProperties.GetContext().MaxHp.Value = 1;
+if (GameMode.Parameters.GetBool("10000hp")) contextedProperties.GetContext(b_team).MaxHp.Value = 10000;
 if (GameMode.Parameters.GetBool("godmode_admin")) b_team.Damage.DamageIn.Value = false;
 if (GameMode.Parameters.GetBool("godmode_people")) p_team.Damage.DamageIn.Value = false;
 
