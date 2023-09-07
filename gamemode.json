@@ -21,6 +21,11 @@
                 "Default": false
             },
             {
+                "Name": "10000hp",
+                "DisplayName": "10000ХП (для строителей). Нужно, если вы делаете паркур карту.",
+                "Default": false
+            },
+            {
                 "Name": "godmode_admin",
                 "DisplayName": "Бессмертие для строителей",
                 "Default": false
