@@ -177,7 +177,7 @@ try {
 		e.moveNext();
 		let start = e.Current.Start, end = e.Current.End;
 		let step_x = start.x > end.x ? 1 : -1, step_y = start.y > end.y ? 1 : -1, step_z = start.z > end.z ? 1 : -1;
-
+		msg.Show("x: " + start.x + " step: " + step_x);
 		for (let x = start.x; x !== end.x - step_x; x += step_x) {
 			for (let y = start.y; y !== end.y - step_y; y += step_y) {
 
