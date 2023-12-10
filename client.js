@@ -178,7 +178,7 @@ function ipc_GetStructure(area)
 	e.moveNext();
 	let count = 0;
 	let start = e.Current.Start, end = e.Current.End;
-	let step_x = start.x > end.x ? 1 : -1, step_y = start.y > end.y ? 1 : -1, step_z = start.z > end.z ? 1 : -1;
+	let step_x = start.x < end.x ? 1 : -1, step_y = start.y < end.y ? 1 : -1, step_z = start.z < end.z ? 1 : -1;
 	for (let x = start.x; step_x == 1 ? (x < end.x) : (x > end.x); x += step_x)
 	{
 		for (let y = start.y; step_y == 1 ? (y < end.y) : (y > end.y); x += step_y)
