@@ -173,10 +173,9 @@ function Admin(id) {
 
 function ipc_GetStructure(area)
 {
-	let result = {pos: [], id: []}, pos = [], id = [];
+	let result = "";
 	e = area.Ranges.GetEnumerator();
 	e.moveNext();
-	let range = e.Current;
 	let start = e.Current.Start, end = e.Current.End;
 	for (let x = start.x; x < Math.sqrt(start.x * start.x + end.x * end.x); x += (x > end.x ? 1 : -1))
 	{
@@ -186,10 +185,11 @@ function ipc_GetStructure(area)
 			{
 				if (MapEditor.GetBlock(x, y, z) != 0)
 				{
-					pos.push({x: x, y: y, z: z});
-					id.push(MapEditor.GetBlock(x, y, z));
+					result += x + "," + y + "," + z + "|" + MapEditor.GetBlock(x, y, z) + "::";
 				}
 			}
 		}
 	}
+	msg.Show(result.slice(0, -2));
+	return result.slice(0, -2);
 } } catch(e) { Validate.ReportInvalid(e.name + " " + e.message); }
