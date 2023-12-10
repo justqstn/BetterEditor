@@ -183,9 +183,9 @@ function ipc_GetStructure(area)
 		{
 			for (let z = start.z; z < Math.sqrt(start.z * start.z + end.z * end.z); z += (z > end.z ? 1 : -1))
 			{
-				if (MapEditor.GetBlock(x, y, z) != 0)
+				if (MapEditor.GetBlockId(x, y, z) != 0)
 				{
-					result += x + "," + y + "," + z + "|" + MapEditor.GetBlock(x, y, z) + "::";
+					result += x + "," + y + "," + z + "|" + MapEditor.GetBlockId(x, y, z) + "::";
 				}
 			}
 		}
