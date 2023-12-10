@@ -1,8 +1,14 @@
-// Better EDITOR от just_qstn
-// v1
+try {
+	// Better EDITOR от just_qstn
 // All rights reversed - все права защищены
 
-
+/*
+ Функции, которые вы можете использовать в режиме:
+Admin(roomid) - выдает/забирает админку по roomid
+Ban(roomid) - банит игрока по roomid
+Cls() - убирает все зоны с тегом cmd
+ipc_GetStructure(area) - проверяет выделенную зону (area), создает структуру в виде строки и выводит ее
+*/
 
 
 
@@ -164,3 +170,26 @@ function Admin(id) {
 		Properties.GetContext().Get("team" + p.Id).Value = "players";
 	}
 }
+
+function ipc_GetStructure(area)
+{
+	let result = {pos: [], id: []}, pos = [], id = [];
+	e = area.Ranges.GetEnumerator();
+	e.moveNext();
+	let range = e.Current;
+	let start = e.Current.Start, end = e.Current.End;
+	for (let x = start.x; x < Math.sqrt(start.x * start.x + end.x * end.x); x += (x > end.x ? 1 : -1))
+	{
+		for (let y = start.y; y < Math.sqrt(start.y * start.y + end.y * end.y); y += (y > end.y ? 1 : -1))
+		{
+			for (let z = start.z; z < Math.sqrt(start.z * start.z + end.z * end.z); z += (z > end.z ? 1 : -1))
+			{
+				if (MapEditor.GetBlock(x, y, z) != 0)
+				{
+					pos.push({x: x, y: y, z: z});
+					id.push(MapEditor.GetBlock(x, y, z));
+				}
+			}
+		}
+	}
+} } catch(e) { Validate.ReportInvalid(e.name + " " + e.message); }
