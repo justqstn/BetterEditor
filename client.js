@@ -176,20 +176,19 @@ function ipc_GetStructure(area)
 	let result = "";
 	e = area.Ranges.GetEnumerator();
 	e.moveNext();
+	let count = 0;
 	let start = e.Current.Start, end = e.Current.End;
-	for (let x = start.x; x < Math.sqrt(start.x * start.x + end.x * end.x); x += (x > end.x ? 1 : -1))
+	let step_x = start.x > end.x ? 1 : -1, step_y = start.y > end.y ? 1 : -1, step_z = start.z > end.z ? 1 : -1;
+	for (let x = start.x; step_x == 1 ? (x < end.x) : (x > end.x); x += step_x)
 	{
-		for (let y = start.y; y < Math.sqrt(start.y * start.y + end.y * end.y); y += (y > end.y ? 1 : -1))
+		for (let y = start.y; step_y == 1 ? (y < end.y) : (y > end.y); x += step_y)
 		{
-			for (let z = start.z; z < Math.sqrt(start.z * start.z + end.z * end.z); z += (z > end.z ? 1 : -1))
+			for (let z = start.z; step_z == 1 ? (z < end.z) : (z > end.z); x += step_z)
 			{
-				if (MapEditor.GetBlockId(x, y, z) != 0)
-				{
-					result += x + "," + y + "," + z + "|" + MapEditor.GetBlockId(x, y, z) + "::";
-				}
+				count++;
 			}
 		}
 	}
-	msg.Show(result.slice(0, -2));
+	msg.Show(count);
 	return result.slice(0, -2);
 } } catch(e) { Validate.ReportInvalid(e.name + " " + e.message); }
