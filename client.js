@@ -181,8 +181,12 @@ function ipc_GetStructure(area)
 	let step_x = start.x < end.x ? 1 : -1, step_y = start.y < end.y ? 1 : -1, step_z = start.z < end.z ? 1 : -1;
 	for (let x = start.x; x != end.x - step_x; x += step_x)
 	{
+		count++;
+
 		for (let y = start.y; y != end.y - step_y; x += step_y)
 		{
+			count++;
+
 			for (let z = start.z; z != end.z - step_z; z += step_z)
 			{
 				count++;
