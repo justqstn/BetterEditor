@@ -179,11 +179,11 @@ function ipc_GetStructure(area)
 	let count = 0;
 	let start = e.Current.Start, end = e.Current.End;
 	let step_x = start.x < end.x ? 1 : -1, step_y = start.y < end.y ? 1 : -1, step_z = start.z < end.z ? 1 : -1;
-	for (let x = start.x; step_x == 1 ? (x < end.x) : (x > end.x); x += step_x)
+	for (let x = start.x; x != end.x - step_x; x += step_x)
 	{
-		for (let y = start.y; step_y == 1 ? (y < end.y) : (y > end.y); x += step_y)
+		for (let y = start.y; y != end.y - step_y; x += step_y)
 		{
-			for (let z = start.z; step_z == 1 ? (z < end.z) : (z > end.z); x += step_z)
+			for (let z = start.z; z != end.z - step_z; z += step_z)
 			{
 				count++;
 			}
